@@ -1,0 +1,47 @@
+<!--Catalog description section-->
+<style>
+  .gry-wht-bkg {
+    background-color:#eeeeee;
+    padding:10px;
+  }
+   figcaption.cap{
+    padding:6px;
+    text-shadow:1px 1px 2px black, 0 0 25px blue, 0 0 5px #5bd2ec;
+   }
+   figure.ban{
+    margin:6px;
+   }
+  p.sm-font{font-size:.75em; padding:.4em;}
+
+  button.ban.box:link{
+    cursor:pointer;
+  }
+
+  button.ban.box:hover {
+    border:2px solid #539cd1;
+    cursor:pointer;
+  }
+
+</style>
+
+
+<!--GeoFlex banner --------------------------------------------------------------------------------->
+
+<article class="container">
+  <section class="inner-container">
+    <div class="row gry-wht-bkg">
+      <div class="col-sm-12 no-gutter" style="border:2px ridge #174f8a;">
+        <a href="https://rainiertents.com/tent-styles/geoflex-stretch-tent.html/" title="Shop Geo Flex event tents and Parts">
+          <div>
+            <button class="ban box" >
+              <img src="{{media url='wysiwyg/infortis/ultimo/banners/tent/mega-menu/product-geo-flex-tent-banner_1100.jpg'}}" alt="Rainier sells Full Strength tent styles and frames along with canopies, tent walls and tent liners in economical kits" />
+            <figcaption class="text-left cap cap-no-bg"><h2><b><span style="color:#EB6B00;">New</span> GeoFlex Stretch Tents</b></h2></figcaption>
+            </button>
+          </div>
+          <p class="sm-font"><strong style="color: #EB6B00;">PREORDERS ONLY - LEAD TIME IS 11 WEEKS. </strong>GeoFlex Stretch Style Event tents are here! You have been asking and we listened. Tap or click to see how easy tent set up, take down and large cloth shelters can be to rent or own.</p>
+        </a>
+      </div>
+  </div>
+  </section>
+</article>
+<!--GeoFlex banner  END ---------------------------------------------------------------------------->

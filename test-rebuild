@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html>
+<style>
+  .filterDiv {
+    /*float: left;*/
+    color: #ffffff;
+    /*width: 32%;*/
+    line-height: 100px;
+    text-align: center;
+    margin: 2px;
+    display: none;
+  }
+
+  .show {
+    display: block;
+  }
+
+  .container {
+    margin-top: 20px;
+    overflow: hidden;
+  }
+
+  /* Style the buttons */
+  .btn {
+    border: none;
+    outline: none;
+    padding: 12px 16px;
+    background-color: #f1f1f1;
+    cursor: pointer;
+  }
+
+  .btn:hover {
+    background-color: #ddd;
+  }
+
+  .btn.active {
+    background-color: #666;
+    color: white;
+  }
+
+  /* Style the Image Used to Trigger the Modal */
+  .img-thumbnail {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .img-thumbnail:hover {
+    opacity: 0.7;
+  }
+
+  /* The Modal (background) */
+  .modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.9);
+    /* Black w/ opacity */
+  }
+
+  /* Modal Content (Image) */
+  .modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+  }
+
+  /* Caption of Modal Image (Image Text) - Same Width as the Image */
+  #caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+  }
+
+  /* Add Animation - Zoom in the Modal */
+  .modal-content,
+  #caption {
+    animation-name: zoom;
+    animation-duration: 0.6s;
+  }
+
+  @keyframes zoom {
+    from {
+      transform: scale(0)
+    }
+
+    to {
+      transform: scale(1)
+    }
+  }
+
+  /* The Close Button */
+  .close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  /* 100% Image Width on Smaller Screens */
+  @media only screen and (max-width: 700px) {
+    .modal-content {
+      width: 100%;
+    }
+  }
+
+  .header-container .navi {
+    z-index: 0!important;
+}
+</style>
+
+<body>
+
+  <h2>Filter DIV Elements</h2>
+
+  <div id="myBtnContainer">
+      <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+      <button class="btn" onclick="filterSelection('Event Venue Tent')"> Event Venue Tent</button>
+      <button class="btn" onclick="filterSelection('T-Rex Tent Jack')"> T-Rex Tent Jack</button>
+      <button class="btn" onclick="filterSelection('High Peak Tent')"> High Peak Tent</button>
+      <button class="btn" onclick="filterSelection('Tent Liners')"> Tent Liners</button>
+      <button class="btn" onclick="filterSelection('Power Walls')"> Power Walls</button>
+      <button class="btn" onclick="filterSelection('West Coast Style Tent')"> West Coast Style Tent</button>
+      <button class="btn" onclick="filterSelection('Tents for Schools')"> Tents for Schools</button>
+      <button class="btn" onclick="filterSelection('Tent Doors')"> Tent Doors</button>
+      <button class="btn" onclick="filterSelection('Disaster Relief Tents')"> Disaster Relief Tents</button>
+      <button class="btn" onclick="filterSelection('Full Strength Kit')"> Full Strength Kit</button>
+      <button class="btn" onclick="filterSelection('Monoslope Tent')"> Monoslope Tent</button>
+      <button class="btn" onclick="filterSelection('Tent Sidewalls')"> Tent Sidewalls</button>
+      <button class="btn" onclick="filterSelection('Geoflex Stretch Tent')"> Geoflex Stretch Tent</button>
+      <button class="btn" onclick="filterSelection('Church Tent')"> Church Tent</button>
+      <button class="btn" onclick="filterSelection('Clear Top Tent')"> Clear Top Tent</button>
+      <button class="btn" onclick="filterSelection('Restaurant Tent')"> Restaurant Tent</button>
+    </div>
+
+  <div class="container">
+    <div class="filterDiv col-sm-6 col-md-4 Event Venue Tent">
+    <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/3H1A1180.jpg" width="450" alt="Full Strength Tent at Juniper Hotel" title="Full Strength Tent at Juniper Hotel" /></div>
+    <div id="myModal" class="modal">
+      <!-- The Close Button -->
+      <span class="close">&times;</span>
+      <!-- Modal Content (The Image) -->
+      <img class="modal-content" id="img01">
+      <!-- Modal Caption (Image Text) -->
+      <div id="caption"></div>
+    </div>
+    <div class="filterDiv col-sm-6 col-md-4 Event Venue Tent">
+      <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/EventVenueTent_2.jpg" width="450" alt="Full Strength Tent for outdoor events"/></div>
+      <!-- The Modal -->
+      <div id="myModal" class="modal">
+        <!-- The Close Button -->
+        <span class="close">&times;</span>
+        <!-- Modal Content (The Image) -->
+        <img class="modal-content" id="img01">
+        <!-- Modal Caption (Image Text) -->
+        <div id="caption"></div>
+      </div>
+
+    <div class="filterDiv col-sm-6 col-md-4 Event Venue Tent" id="event venue tent">
+      <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/EventVenueTent_3.jpg" width="450" alt="Power Screen Install" /></div>
+      <!-- The Modal -->
+      <div id="myModal" class="modal">
+        <!-- The Close Button -->
+        <span class="close">&times;</span>
+        <!-- Modal Content (The Image) -->
+        <img class="modal-content" id="img01">
+        <!-- Modal Caption (Image Text) -->
+        <div id="caption"></div>
+      </div>
+
+    <div class="filterDiv col-sm-6 col-md-4 Event Venue Tent" id="event venue tent">
+      <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/EventVenueTent_4.jpg" width="450" alt="Power Screen Install" /></div>
+      <!-- The Modal -->
+      <div id="myModal" class="modal">
+        <!-- The Close Button -->
+        <span class="close">&times;</span>
+        <!-- Modal Content (The Image) -->
+        <img class="modal-content" id="img01">
+        <!-- Modal Caption (Image Text) -->
+        <div id="caption"></div>
+      </div>
+
+      <!--t-rex tent jack page-->
+      <div class="filterDiv col-sm-6 col-md-4 T-Rex Tent Jack" id="t-rex tent jack">
+        <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/TREX_1.jpg" width="450" alt="T-Rex Tent Jack" /></div>
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+          <!-- The Close Button -->
+          <span class="close">&times;</span>
+          <!-- Modal Content (The Image) -->
+          <img class="modal-content" id="img01">
+          <!-- Modal Caption (Image Text) -->
+          <div id="caption"></div>
+        </div>
+
+        <div class="filterDiv col-sm-6 col-md-4 T-Rex Tent Jack" id="t-rex tent jack">
+          <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/TREX_3.jpg" width="450" alt="T-Rex Tent Jack" />
+          </div>
+          <!-- The Modal -->
+          <div id="myModal" class="modal">
+            <!-- The Close Button -->
+            <span class="close">&times;</span>
+            <!-- Modal Content (The Image) -->
+            <img class="modal-content" id="img01">
+            <!-- Modal Caption (Image Text) -->
+            <div id="caption"></div>
+          </div>
+
+        <div class="filterDiv col-sm-6 col-md-4 T-Rex Tent Jack" id="t-rex tent jack">
+          <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/TREX_5.jpg" width="450" alt="T-Rex Tent Jack" /></div>
+          <!-- The Modal -->
+          <div id="myModal" class="modal">
+            <!-- The Close Button -->
+            <span class="close">&times;</span>
+            <!-- Modal Content (The Image) -->
+            <img class="modal-content" id="img01">
+            <!-- Modal Caption (Image Text) -->
+            <div id="caption"></div>
+          </div>
+
+        <div class="filterDiv col-sm-6 col-md-4 T-Rex Tent Jack" id="t-rex tent jack">
+          <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/TREX_6.jpg" width="450" alt="T-Rex Tent Jack" /></div>
+          <!-- The Modal -->
+          <div id="myModal" class="modal">
+            <!-- The Close Button -->
+            <span class="close">&times;</span>
+            <!-- Modal Content (The Image) -->
+            <img class="modal-content" id="img01">
+            <!-- Modal Caption (Image Text) -->
+            <div id="caption"></div>
+          </div>
+
+          <!--high peak tent-->
+          <div class="filterDiv col-sm-6 col-md-4 High Peak Tent" id="high peak tent">
+            <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/HighPeakInterior.jpg" width="450" alt="High Peak Restaurant Tent" /></div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+              <!-- The Close Button -->
+              <span class="close">&times;</span>
+              <!-- Modal Content (The Image) -->
+              <img class="modal-content" id="img01">
+              <!-- Modal Caption (Image Text) -->
+              <div id="caption"></div>
+            </div>
+
+
+          <div class="filterDiv col-sm-6 col-md-4 High Peak Tent" id="high peak tent">
+            <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/HighPeakTent.jpg" width="450" alt="High Peak Event Tent" /></div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+              <!-- The Close Button -->
+              <span class="close">&times;</span>
+              <!-- Modal Content (The Image) -->
+              <img class="modal-content" id="img01">
+              <!-- Modal Caption (Image Text) -->
+              <div id="caption"></div>
+            </div>
+
+
+          <!--tent liners-->
+          <div class="filterDiv col-sm-6 col-md-4 Tent Liners" id="tent liners">
+            <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/SkylinerTentLiner.jpg" width="450" alt="Skyliner Tent Liner" /></div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+              <!-- The Close Button -->
+              <span class="close">&times;</span>
+              <!-- Modal Content (The Image) -->
+              <img class="modal-content" id="img01">
+              <!-- Modal Caption (Image Text) -->
+              <div id="caption"></div>
+            </div>
+
+          <div class="filterDiv col-sm-6 col-md-4 Tent Liners" id="tent liners">
+            <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/TentLiner.jpg" width="450" alt="Tent Liners" /></div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+              <!-- The Close Button -->
+              <span class="close">&times;</span>
+              <!-- Modal Content (The Image) -->
+              <img class="modal-content" id="img01">
+              <!-- Modal Caption (Image Text) -->
+              <div id="caption"></div>
+            </div>
+
+          <!--power walls-->
+          <div class="filterDiv col-sm-6 col-md-4 Power Walls" id="power walls">
+            <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/PowerWall.jpg" width="450" alt="Tent Liners" /></div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+              <!-- The Close Button -->
+              <span class="close">&times;</span>
+              <!-- Modal Content (The Image) -->
+              <img class="modal-content" id="img01">
+              <!-- Modal Caption (Image Text) -->
+              <div id="caption"></div>
+            </div>
+
+
+          <!--west coast style tent-->
+
+          <!--Tents for Schools-->
+
+          <div class="filterDiv col-sm-6 col-md-4 Tents for Schools" id="tents for schools">
+            <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/SchoolTent.jpg" width="450" alt="Full Strength Tent at George Fox University" /></div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+              <!-- The Close Button -->
+              <span class="close">&times;</span>
+              <!-- Modal Content (The Image) -->
+              <img class="modal-content" id="img01">
+              <!-- Modal Caption (Image Text) -->
+              <div id="caption"></div>
+            </div>
+
+          <div class="filterDiv col-sm-6 col-md-4 Tents for Schools" id="tents for schools">
+            <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/SchoolDiningTent.jpg" width="450" alt="Full Strength Dining Tent at George Fox University" /></div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+              <!-- The Close Button -->
+              <span class="close">&times;</span>
+              <!-- Modal Content (The Image) -->
+              <img class="modal-content" id="img01">
+              <!-- Modal Caption (Image Text) -->
+              <div id="caption"></div>
+            </div>
+
+          <div class="filterDiv col-sm-6 col-md-4 Tents for Schools" id="tents for schools">
+            <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/LargeFullStrength.jpg" width="450" alt="Full Strength Tent at George Fox University" /></div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+              <!-- The Close Button -->
+              <span class="close">&times;</span>
+              <!-- Modal Content (The Image) -->
+              <img class="modal-content" id="img01">
+              <!-- Modal Caption (Image Text) -->
+              <div id="caption"></div>
+            </div>
+
+          <!--restaraunt tent-->
+          <div class="filterDiv col-sm-6 col-md-4 Restaurant Tent" id="restaurant tent">
+            <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/WineryTent_5.jpg" width="450" alt="Full Strength Tent at Barrage Cellars" /></div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+              <!-- The Close Button -->
+              <span class="close">&times;</span>
+              <!-- Modal Content (The Image) -->
+              <img class="modal-content" id="img01">
+              <!-- Modal Caption (Image Text) -->
+              <div id="caption"></div>
+            </div>
+
+          <div class="filterDiv col-sm-6 col-md-4 Restaurant Tent" id="restaurant tent">
+            <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/WineryTent_4.jpg" width="450" alt="Full Strength Tent at Barrage Cellars" /></div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+              <!-- The Close Button -->
+              <span class="close">&times;</span>
+              <!-- Modal Content (The Image) -->
+              <img class="modal-content" id="img01">
+              <!-- Modal Caption (Image Text) -->
+              <div id="caption"></div>
+            </div>
+
+          <div class="filterDiv col-sm-6 col-md-4 Restaurant Tent" id="restaurant tent">
+            <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/WineryTent_2.jpg" width="450" alt="Full Strength Tent at Barrage Cellars" /></div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+              <!-- The Close Button -->
+              <span class="close">&times;</span>
+              <!-- Modal Content (The Image) -->
+              <img class="modal-content" id="img01">
+              <!-- Modal Caption (Image Text) -->
+              <div id="caption"></div>
+            </div>
+
+          <div class="filterDiv col-sm-6 col-md-4 Restaurant Tent" id="restaraunt tent">
+            <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/RestaurantTent_7.jpg" width="450" alt="Full Strength Tent at Public House restaraunt" /></div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+              <!-- The Close Button -->
+              <span class="close">&times;</span>
+              <!-- Modal Content (The Image) -->
+              <img class="modal-content" id="img01">
+              <!-- Modal Caption (Image Text) -->
+              <div id="caption"></div>
+            </div>
+
+          <div class="filterDiv col-sm-6 col-md-4 Restaurant Tent" id="restaraunt tent">
+            <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/RestaurantTent_2.jpg" width="450" alt="Full Strength Tent for outdoor dining" /></div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+              <!-- The Close Button -->
+              <span class="close">&times;</span>
+              <!-- Modal Content (The Image) -->
+              <img class="modal-content" id="img01">
+              <!-- Modal Caption (Image Text) -->
+              <div id="caption"></div>
+            </div>
+
+          <div class="filterDiv col-sm-6 col-md-4 Restaurant Tent" id="restaraunt tent">
+            <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/RestaurantTent.jpg" width="450" alt="Full Strength Tent for outdoor dining" /></div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+              <!-- The Close Button -->
+              <span class="close">&times;</span>
+              <!-- Modal Content (The Image) -->
+              <img class="modal-content" id="img01">
+              <!-- Modal Caption (Image Text) -->
+              <div id="caption"></div>
+            </div>
+
+
+          <div class="filterDiv col-sm-6 col-md-4 Restaurant Tent" id="restaraunt tent">
+            <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/QuarterdeckTent.jpg" width="450" alt="Full Strength Tent for outdoor dining" /></div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+              <!-- The Close Button -->
+              <span class="close">&times;</span>
+              <!-- Modal Content (The Image) -->
+              <img class="modal-content" id="img01">
+              <!-- Modal Caption (Image Text) -->
+              <div id="caption"></div>
+            </div>
+
+
+          <div class="filterDiv col-sm-6 col-md-4 Restaurant Tent" id="restaraunt tent">
+            <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/PC-11.jpg" width="450" alt="Full Strength Tent for outdoor dining" /></div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+              <!-- The Close Button -->
+              <span class="close">&times;</span>
+              <!-- Modal Content (The Image) -->
+              <img class="modal-content" id="img01">
+              <!-- Modal Caption (Image Text) -->
+              <div id="caption"></div>
+            </div>
+
+
+          <div class="filterDiv col-sm-6 col-md-4 Restaurant Tent" id="restaraunt tent">
+            <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/Red-Hills-Market.jpg" width="450" alt="Full Strength Tent for outdoor dining" /></div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+              <!-- The Close Button -->
+              <span class="close">&times;</span>
+              <!-- Modal Content (The Image) -->
+              <img class="modal-content" id="img01">
+              <!-- Modal Caption (Image Text) -->
+              <div id="caption"></div>
+            </div>
+
+
+
+          <!--tent doors-->
+
+          <div class="filterDiv col-sm-6 col-md-4 Tent Doors" id="Tent Doors">
+            <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/TentDoors_1.jpg" width="450" alt="Tent doors bring elegance and functionality to any tent or event." /></div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+              <!-- The Close Button -->
+              <span class="close">&times;</span>
+              <!-- Modal Content (The Image) -->
+              <img class="modal-content" id="img01">
+              <!-- Modal Caption (Image Text) -->
+              <div id="caption"></div>
+            </div>
+
+
+          <div class="filterDiv col-sm-6 col-md-4 Tent Doors" id="Tent Doors">
+            <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/TentDoors_2.jpg" width="450" alt="Tent doors bring elegance and functionality to any tent or event." /></div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+              <!-- The Close Button -->
+              <span class="close">&times;</span>
+              <!-- Modal Content (The Image) -->
+              <img class="modal-content" id="img01">
+              <!-- Modal Caption (Image Text) -->
+              <div id="caption"></div>
+            </div>
+
+
+          <div class="filterDiv col-sm-6 col-md-4 Tent Doors" id="Tent Doors">
+            <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/TentDoors_4.jpg" width="450" alt="Tent doors bring elegance and functionality to any tent or event." /></div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+              <!-- The Close Button -->
+              <span class="close">&times;</span>
+              <!-- Modal Content (The Image) -->
+              <img class="modal-content" id="img01">
+              <!-- Modal Caption (Image Text) -->
+              <div id="caption"></div>
+            </div>
+
+
+          <div class="filterDiv col-sm-6 col-md-4 Tent Doors" id="Tent Doors">
+            <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/TentDoors_5.jpg" width="450" alt="Tent doors bring elegance and functionality to any tent or event." /></div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+              <!-- The Close Button -->
+              <span class="close">&times;</span>
+              <!-- Modal Content (The Image) -->
+              <img class="modal-content" id="img01">
+              <!-- Modal Caption (Image Text) -->
+              <div id="caption"></div>
+            </div>
+
+
+          <div class="filterDiv col-sm-6 col-md-4 Tent Doors" id="Tent Doors">
+            <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/TentDoors_6.jpg" width="450" alt="Tent doors bring elegance and functionality to any tent or event." /></div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+              <!-- The Close Button -->
+              <span class="close">&times;</span>
+              <!-- Modal Content (The Image) -->
+              <img class="modal-content" id="img01">
+              <!-- Modal Caption (Image Text) -->
+              <div id="caption"></div>
+            </div>
+
+
+          <!--disaster relief tents-->
+
+          <div class="filterDiv col-sm-6 col-md-4 Disaster Relief Tents" id="Disaster Relief Tents">
+            <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/EnduranceTent_3.jpg" width="450" alt="Endurance tent for disaster relief efforts." /></div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+              <!-- The Close Button -->
+              <span class="close">&times;</span>
+              <!-- Modal Content (The Image) -->
+              <img class="modal-content" id="img01">
+              <!-- Modal Caption (Image Text) -->
+              <div id="caption"></div>
+            </div>
+
+
+          <div class="filterDiv col-sm-6 col-md-4 Disaster Relief Tents" id="Disaster Relief Tents">
+            <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/EnduranceTent_2.jpg" width="450" alt="Endurance tent for disaster relief efforts." /></div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+              <!-- The Close Button -->
+              <span class="close">&times;</span>
+              <!-- Modal Content (The Image) -->
+              <img class="modal-content" id="img01">
+              <!-- Modal Caption (Image Text) -->
+              <div id="caption"></div>
+            </div>
+
+
+          <div class="filterDiv col-sm-6 col-md-4 Disaster Relief Tents" id="Disaster Relief Tents">
+            <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/EnduranceTent.jpg" width="450" alt="Endurance tent for disaster relief efforts." /></div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+              <!-- The Close Button -->
+              <span class="close">&times;</span>
+              <!-- Modal Content (The Image) -->
+              <img class="modal-content" id="img01">
+              <!-- Modal Caption (Image Text) -->
+              <div id="caption"></div>
+            </div>
+
+
+          <!--full strength tent kit-->
+
+          <div class="filterDiv col-sm-6 col-md-4 Full Strength Kit" id="full strength tent kit">
+            <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/FullStrength_3.jpg" width="450" alt="Full Strength tent for outdoor dining" /></div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+              <!-- The Close Button -->
+              <span class="close">&times;</span>
+              <!-- Modal Content (The Image) -->
+              <img class="modal-content" id="img01">
+              <!-- Modal Caption (Image Text) -->
+              <div id="caption"></div>
+            </div>
+
+
+          <div class="filterDiv col-sm-6 col-md-4 Full Strength Kit" id="full strength tent kit">
+            <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/FullStrength_1.jpg" width="450" alt="Full Strength tent for outdoor dining" /></div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+              <!-- The Close Button -->
+              <span class="close">&times;</span>
+              <!-- Modal Content (The Image) -->
+              <img class="modal-content" id="img01">
+              <!-- Modal Caption (Image Text) -->
+              <div id="caption"></div>
+            </div>
+
+
+          <div class="filterDiv col-sm-6 col-md-4 Full Strength Kit" id="full strength tent kit">
+            <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/FullStrength_1-2.jpg" width="450" alt="Full Strength tent for outdoor dining" /></div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+              <!-- The Close Button -->
+              <span class="close">&times;</span>
+              <!-- Modal Content (The Image) -->
+              <img class="modal-content" id="img01">
+              <!-- Modal Caption (Image Text) -->
+              <div id="caption"></div>
+            </div>
+
+
+          <!--monoslope tent kit-->
+          <div class="filterDiv col-sm-6 col-md-4 Monoslope Tent" id="monoslope tent kit">
+            <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/Monoslope_2.jpg" width="450" alt="Monoslope Tent Test Fitting" /></div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+              <!-- The Close Button -->
+              <span class="close">&times;</span>
+              <!-- Modal Content (The Image) -->
+              <img class="modal-content" id="img01">
+              <!-- Modal Caption (Image Text) -->
+              <div id="caption"></div>
+            </div>
+
+
+          <div class="filterDiv col-sm-6 col-md-4 Monoslope Tent" id="monoslope tent kit">
+            <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/MonoslopeRestaurant.jpg" width="450" alt="Monoslope Tent for outdoor dining" /></div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+              <!-- The Close Button -->
+              <span class="close">&times;</span>
+              <!-- Modal Content (The Image) -->
+              <img class="modal-content" id="img01">
+              <!-- Modal Caption (Image Text) -->
+              <div id="caption"></div>
+            </div>
+
+
+          <div class="filterDiv col-sm-6 col-md-4 Monoslope Tent" id="monoslope tent kit">
+            <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/MonoslopeTent-2.jpg" width="450" alt="Monoslope Tent for outdoor dining" /></div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+              <!-- The Close Button -->
+              <span class="close">&times;</span>
+              <!-- Modal Content (The Image) -->
+              <img class="modal-content" id="img01">
+              <!-- Modal Caption (Image Text) -->
+              <div id="caption"></div>
+            </div>
+
+
+          <div class="filterDiv col-sm-6 col-md-4 Monoslope Tent" id="monoslope tent kit">
+            <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/MonoslopeTent.jpg" width="450" alt="Monoslope Tent parts" /></div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+              <!-- The Close Button -->
+              <span class="close">&times;</span>
+              <!-- Modal Content (The Image) -->
+              <img class="modal-content" id="img01">
+              <!-- Modal Caption (Image Text) -->
+              <div id="caption"></div>
+            </div>
+
+
+          <!--lite track tent-->
+
+          <!--geoflex stretch tent-->
+          <div class="filterDiv col-sm-6 col-md-4 Geoflex Stretch Tent" id="geoflex stretch tent">
+            <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/GeoFlexStretchTent.jpg" width="450" alt="Geoflex Stretch Tent for outdoor dining" /></div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+              <!-- The Close Button -->
+              <span class="close">&times;</span>
+              <!-- Modal Content (The Image) -->
+              <img class="modal-content" id="img01">
+              <!-- Modal Caption (Image Text) -->
+              <div id="caption"></div>
+            </div>
+
+
+          <div class="filterDiv col-sm-6 col-md-4 Geoflex Stretch Tent" id="geoflex stretch tent">
+            <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/GeoFlexTent.jpg" width="450" alt="Geoflex Stretch tent for outdoor dining" /></div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+              <!-- The Close Button -->
+              <span class="close">&times;</span>
+              <!-- Modal Content (The Image) -->
+              <img class="modal-content" id="img01">
+              <!-- Modal Caption (Image Text) -->
+              <div id="caption"></div>
+            </div>
+
+
+          <!--church tent-->
+
+          <div class="filterDiv col-sm-6 col-md-4 Church Tent" id="church tent">
+            <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/ChurchTent_4.jpg" width="450" alt="Full Strength Tent Kit for outdoor church service" /></div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+              <!-- The Close Button -->
+              <span class="close">&times;</span>
+              <!-- Modal Content (The Image) -->
+              <img class="modal-content" id="img01">
+              <!-- Modal Caption (Image Text) -->
+              <div id="caption"></div>
+            </div>
+
+
+          <div class="filterDiv col-sm-6 col-md-4 Church Tent" id="church tent">
+            <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/ChurchTent_1.jpg" width="450" alt="Full Strength Tent Kit for outdoor church service" /></div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+              <!-- The Close Button -->
+              <span class="close">&times;</span>
+              <!-- Modal Content (The Image) -->
+              <img class="modal-content" id="img01">
+              <!-- Modal Caption (Image Text) -->
+              <div id="caption"></div>
+            </div>
+
+
+          <div class="filterDiv col-sm-6 col-md-4 Church Tent" id="church tent">
+            <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/ChurchTent_1-2.jpg" width="450" alt="Full Strength Tent Kit for outdoor church service" /></div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+              <!-- The Close Button -->
+              <span class="close">&times;</span>
+              <!-- Modal Content (The Image) -->
+              <img class="modal-content" id="img01">
+              <!-- Modal Caption (Image Text) -->
+              <div id="caption"></div>
+            </div>
+
+
+          <!--clear top tent-->
+
+          <div class="filterDiv col-sm-6 col-md-4 Clear Top Tent" id="Clear Top Tent">
+            <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/PC-11-1.jpg" width="450" alt="clear top tents for events" /></div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+              <!-- The Close Button -->
+              <span class="close">&times;</span>
+              <!-- Modal Content (The Image) -->
+              <img class="modal-content" id="img01">
+              <!-- Modal Caption (Image Text) -->
+              <div id="caption"></div>
+            </div>
+
+
+          <div class="filterDiv col-sm-6 col-md-4 Clear Top Tent" id="Clear Top Tent">
+            <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/ClearTop_4.jpg" width="450" alt="clear top tents for events" /></div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+              <!-- The Close Button -->
+              <span class="close">&times;</span>
+              <!-- Modal Content (The Image) -->
+              <img class="modal-content" id="img01">
+              <!-- Modal Caption (Image Text) -->
+              <div id="caption"></div>
+            </div>
+
+
+          <div class="filterDiv col-sm-6 col-md-4 Clear Top Tent" id="Clear Top Tent">
+            <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/ClearTop_3.jpg" width="450" alt="clear top tents for events" /></div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+              <!-- The Close Button -->
+              <span class="close">&times;</span>
+              <!-- Modal Content (The Image) -->
+              <img class="modal-content" id="img01">
+              <!-- Modal Caption (Image Text) -->
+              <div id="caption"></div>
+            </div>
+
+
+          <div class="filterDiv col-sm-6 col-md-4 Clear Top Tent" id="Clear Top Tent">
+            <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/ClearTop_2.jpg" width="450" alt="clear top tents for events" /></div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+              <!-- The Close Button -->
+              <span class="close">&times;</span>
+              <!-- Modal Content (The Image) -->
+              <img class="modal-content" id="img01">
+              <!-- Modal Caption (Image Text) -->
+              <div id="caption"></div>
+            </div>
+
+
+          <div class="filterDiv col-sm-6 col-md-4 Clear Top Tent" id="Clear Top Tent">
+            <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/ClearTop_1.jpg" width="450" alt="clear top tents for events" /></div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+              <!-- The Close Button -->
+              <span class="close">&times;</span>
+              <!-- Modal Content (The Image) -->
+              <img class="modal-content" id="img01">
+              <!-- Modal Caption (Image Text) -->
+              <div id="caption"></div>
+            </div>
+
+
+          <!--sidewalls-->
+
+          <div class="filterDiv col-sm-6 col-md-4 Tent Sidewalls" id="sidewalls">
+            <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/Von-Ebert-7.jpg" width="450" alt="clear sidewalls for outdoor dining coverage" /></div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+              <!-- The Close Button -->
+              <span class="close">&times;</span>
+              <!-- Modal Content (The Image) -->
+              <img class="modal-content" id="img01">
+              <!-- Modal Caption (Image Text) -->
+              <div id="caption"></div>
+            </div>
+
+
+          <div class="filterDiv col-sm-6 col-md-4 Tent Sidewalls" id="sidewalls">
+            <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/Von-Ebert-5.jpg" width="450" alt="clear sidewalls for outdoor dining coverage" /></div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+              <!-- The Close Button -->
+              <span class="close">&times;</span>
+              <!-- Modal Content (The Image) -->
+              <img class="modal-content" id="img01">
+              <!-- Modal Caption (Image Text) -->
+              <div id="caption"></div>
+            </div>
+
+
+          <div class="filterDiv col-sm-6 col-md-4 Tent Sidewalls" id="sidewalls">
+            <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/Sidewalls_2.jpg" width="450" alt="clear sidewalls for outdoor event center" /></div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+              <!-- The Close Button -->
+              <span class="close">&times;</span>
+              <!-- Modal Content (The Image) -->
+              <img class="modal-content" id="img01">
+              <!-- Modal Caption (Image Text) -->
+              <div id="caption"></div>
+            </div>
+
+
+          <div class="filterDiv col-sm-6 col-md-4 Tent Sidewalls" id="sidewalls">
+            <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/ED-6.jpg" width="450" alt="clear sidewalls for outdoor event center" /></div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+              <!-- The Close Button -->
+              <span class="close">&times;</span>
+              <!-- Modal Content (The Image) -->
+              <img class="modal-content" id="img01">
+              <!-- Modal Caption (Image Text) -->
+              <div id="caption"></div>
+            </div>
+
+
+          <div class="filterDiv col-sm-6 col-md-4 Tent Sidewalls" id="sidewalls">
+            <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/ED-3.jpg" width="450" alt="clear sidewalls for outdoor event center" /></div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+              <!-- The Close Button -->
+              <span class="close">&times;</span>
+              <!-- Modal Content (The Image) -->
+              <img class="modal-content" id="img01">
+              <!-- Modal Caption (Image Text) -->
+              <div id="caption"></div>
+            </div>
+
+
+          <div class="filterDiv col-sm-6 col-md-4 Tent Sidewalls" id="sidewalls">
+            <img class="img-thumbnail" src="https://rainiertents.com/wp/wp-content/uploads/sites/3/2021/09/ED-4.jpg" width="450" alt="clear sidewalls for outdoor event center" /></div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+              <!-- The Close Button -->
+              <span class="close">&times;</span>
+              <!-- Modal Content (The Image) -->
+              <img class="modal-content" id="img01">
+              <!-- Modal Caption (Image Text) -->
+              <div id="caption"></div>
+            </div>
+
+
+  </div>
+
+  <script>
+    filterSelection("all")
+
+    function filterSelection(c) {
+      var x, i;
+      x = document.getElementsByClassName("filterDiv");
+      if (c == "all") c = "";
+      for (i = 0; i < x.length; i++) {
+        w3RemoveClass(x[i], "show");
+        if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+      }
+    }
+
+    function w3AddClass(element, name) {
+      var i, arr1, arr2;
+      arr1 = element.className.split(" ");
+      arr2 = name.split(" ");
+      for (i = 0; i < arr2.length; i++) {
+        if (arr1.indexOf(arr2[i]) == -1) {
+          element.className += " " + arr2[i];
+        }
+      }
+    }
+
+    function w3RemoveClass(element, name) {
+      var i, arr1, arr2;
+      arr1 = element.className.split(" ");
+      arr2 = name.split(" ");
+      for (i = 0; i < arr2.length; i++) {
+        while (arr1.indexOf(arr2[i]) > -1) {
+          arr1.splice(arr1.indexOf(arr2[i]), 1);
+        }
+      }
+      element.className = arr1.join(" ");
+    }
+
+    // Add active class to the current button (highlight it)
+    var btnContainer = document.getElementById("myBtnContainer");
+    var btns = btnContainer.getElementsByClassName("btn");
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].addEventListener("click", function() {
+        var current = document.getElementsByClassName("active");
+        current[0].className = current[0].className.replace(" active", "");
+        this.className += " active";
+      });
+    }
+  </script>
+
+  <script>
+    // Get the modal
+    var modal = document.getElementById('myModal');
+
+    // Get the images and bind an onclick event on each to insert it inside the modal
+    // use its "alt" text as a caption
+    var images = document.querySelectorAll(".img-thumbnail");
+    var modalImg = document.getElementById("img01");
+    var captionText = document.getElementById("caption");
+    for (let i = 0; i < images.length; i++) {
+      images[i].onclick = function() {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        captionText.innerHTML = this.alt;
+      }
+    }
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+  </script>
+
+</body>
+
+</html>
